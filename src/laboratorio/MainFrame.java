@@ -24,11 +24,11 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
-
         DefaultMutableTreeNode n = new DefaultMutableTreeNode("EDT");
         treeModel = new DefaultTreeModel(n);
         graphicalTree.setModel(treeModel);
-        jComboBox1.addItem(n);
+        tree.setTitle("EDT");
+        jComboBox1.addItem(n);     
     }
 
     /**
@@ -113,16 +113,21 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void packageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_packageButtonActionPerformed
+
         DefaultMutableTreeNode n = new DefaultMutableTreeNode(nodeField.getText());
         DefaultMutableTreeNode parent = (DefaultMutableTreeNode) jComboBox1.getSelectedItem();
         treeModel.insertNodeInto(n, parent, parent.getChildCount());
+        tree.insert(parent.toString(), n.toString(), NaryTree.NodeType.PACKAGE_NODE);
         jComboBox1.addItem(n);
+        System.out.println(tree);
     }//GEN-LAST:event_packageButtonActionPerformed
 
     private void deliverableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliverableButtonActionPerformed
         DefaultMutableTreeNode n = new DefaultMutableTreeNode(nodeField.getText());
         DefaultMutableTreeNode parent = (DefaultMutableTreeNode) jComboBox1.getSelectedItem();
         treeModel.insertNodeInto(n, parent, parent.getChildCount());
+        tree.insert(parent.toString(), n.toString(), NaryTree.NodeType.DELIVERABLE_NODE);
+        System.out.println(tree);
     }//GEN-LAST:event_deliverableButtonActionPerformed
 
     /**
