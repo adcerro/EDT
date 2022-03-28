@@ -51,7 +51,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Proyect Managment Office");
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jComboBox1.setToolTipText("Seleccione aqui donde desea insertar");
 
@@ -63,6 +62,11 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         deliverableButton.setText("Insertar entregable");
+        deliverableButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deliverableButtonActionPerformed(evt);
+            }
+        });
 
         graphicalTree.setShowsRootHandles(true);
         jScrollPane1.setViewportView(graphicalTree);
@@ -81,7 +85,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(deliverableButton))
                     .addComponent(nodeField)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30))
         );
         edtPaneLayout.setVerticalGroup(
@@ -114,6 +118,12 @@ public class MainFrame extends javax.swing.JFrame {
         treeModel.insertNodeInto(n, parent, parent.getChildCount());
         jComboBox1.addItem(n);
     }//GEN-LAST:event_packageButtonActionPerformed
+
+    private void deliverableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliverableButtonActionPerformed
+        DefaultMutableTreeNode n = new DefaultMutableTreeNode(nodeField.getText());
+        DefaultMutableTreeNode parent = (DefaultMutableTreeNode) jComboBox1.getSelectedItem();
+        treeModel.insertNodeInto(n, parent, parent.getChildCount());
+    }//GEN-LAST:event_deliverableButtonActionPerformed
 
     /**
      * @param args the command line arguments
