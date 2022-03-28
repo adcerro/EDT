@@ -33,8 +33,8 @@ public class Laboratorio {
 //        tree.insert("Node A.1", "Node D.3", NaryTree.NodeType.DELIVERABLE_NODE);
 //        tree.insert("Node A", "Node A.52 project", NaryTree.NodeType.PACKAGE_NODE);
 //
-//        tree.insertDerivableNode("Node A", "Final node", "This is the content of the file");
-//        tree.insertDerivableNode("Node A", "this is a try", "this is another file");
+//        tree.insertDeliverableNode("Node A", "Final node", "This is the content of the file");
+//        tree.insertDeliverableNode("Node A", "this is a try", "this is another file");
 //        System.out.println(tree);
         MainFrame frame = new MainFrame();
         frame.setLocationRelativeTo(null);

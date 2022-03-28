@@ -48,6 +48,8 @@ public class MainFrame extends javax.swing.JFrame {
         deliverableButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         graphicalTree = new javax.swing.JTree();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Proyect Managment Office");
@@ -71,6 +73,10 @@ public class MainFrame extends javax.swing.JFrame {
         graphicalTree.setShowsRootHandles(true);
         jScrollPane1.setViewportView(graphicalTree);
 
+        jLabel1.setText("Insertar en:");
+
+        jLabel2.setText("Nombre de paquete/archivo:");
+
         javax.swing.GroupLayout edtPaneLayout = new javax.swing.GroupLayout(edtPane);
         edtPane.setLayout(edtPaneLayout);
         edtPaneLayout.setHorizontalGroup(
@@ -78,7 +84,11 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, edtPaneLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 329, Short.MAX_VALUE)
+                .addGap(237, 237, 237)
+                .addGroup(edtPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(edtPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(edtPaneLayout.createSequentialGroup()
                         .addComponent(packageButton)
@@ -95,9 +105,13 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(edtPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(edtPaneLayout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(edtPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
                         .addGap(18, 18, 18)
-                        .addComponent(nodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(edtPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(edtPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(packageButton)
@@ -113,7 +127,6 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void packageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_packageButtonActionPerformed
-
         DefaultMutableTreeNode n = new DefaultMutableTreeNode(nodeField.getText());
         DefaultMutableTreeNode parent = (DefaultMutableTreeNode) jComboBox1.getSelectedItem();
         treeModel.insertNodeInto(n, parent, parent.getChildCount());
@@ -126,7 +139,7 @@ public class MainFrame extends javax.swing.JFrame {
         DefaultMutableTreeNode n = new DefaultMutableTreeNode(nodeField.getText());
         DefaultMutableTreeNode parent = (DefaultMutableTreeNode) jComboBox1.getSelectedItem();
         treeModel.insertNodeInto(n, parent, parent.getChildCount());
-        tree.insert(parent.toString(), n.toString(), NaryTree.NodeType.DELIVERABLE_NODE);
+        tree.insertDeliverableNode(parent.toString(), n.toString(), "This is the content of the file");
         System.out.println(tree);
     }//GEN-LAST:event_deliverableButtonActionPerformed
 
@@ -170,6 +183,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel edtPane;
     private javax.swing.JTree graphicalTree;
     private javax.swing.JComboBox<DefaultMutableTreeNode> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane mainPane;
     private javax.swing.JTextField nodeField;

@@ -52,7 +52,7 @@ public class NaryTree {
         insert(parentValue, value, new PackageTreeNode(value));
     }
 
-    public void insertDerivableNode(String parentValue, String value, String fileContent) {
+    public void insertDeliverableNode(String parentValue, String value, String fileContent) {
         insert(parentValue, value, new DeliverableTreeNode(value, fileContent));
     }
 
