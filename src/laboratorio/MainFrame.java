@@ -4,11 +4,13 @@
  */
 package laboratorio;
 
+
 import javax.swing.JComboBox;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
+import javax.swing.tree.TreePath;
 
 /**
  *
@@ -30,7 +32,13 @@ public class MainFrame extends javax.swing.JFrame {
         tree.setTitle("EDT");
         jComboBox1.addItem(n);     
     }
-
+public boolean matches(String info, TreeNode t){
+    if(info.contentEquals(t.getValue())){
+    return true;
+    }else{
+        return false;
+    }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,12 +135,14 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void packageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_packageButtonActionPerformed
-        DefaultMutableTreeNode n = new DefaultMutableTreeNode(nodeField.getText());
+    DefaultMutableTreeNode n = new DefaultMutableTreeNode(nodeField.getText());
         DefaultMutableTreeNode parent = (DefaultMutableTreeNode) jComboBox1.getSelectedItem();
         treeModel.insertNodeInto(n, parent, parent.getChildCount());
         tree.insert(parent.toString(), n.toString(), NaryTree.NodeType.PACKAGE_NODE);
         jComboBox1.addItem(n);
         System.out.println(tree);
+       
+        
     }//GEN-LAST:event_packageButtonActionPerformed
 
     private void deliverableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliverableButtonActionPerformed
