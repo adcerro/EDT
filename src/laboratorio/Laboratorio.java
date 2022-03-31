@@ -1,8 +1,14 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package laboratorio;
 
-import java.awt.Dimension;
-
+/**
+ *
+ * @author David
+ */
 public class Laboratorio {
 
     /**
@@ -10,32 +16,6 @@ public class Laboratorio {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        NaryTree tree = new NaryTree();
-        
-//        
-//        tree.setTitle("This is the title");
-//        tree.insert("This is the title", "Node A", NaryTree.NodeType.PACKAGE_NODE);
-//        tree.insert("This is the title", "Node B", NaryTree.NodeType.PACKAGE_NODE);
-//        tree.insert("Node A", "Node A.1", NaryTree.NodeType.PACKAGE_NODE);
-//
-//
-//        tree.insert("Node B", "Test", NaryTree.NodeType.PACKAGE_NODE);
-//
-//        tree.insert("Node C", "Lol", NaryTree.NodeType.PACKAGE_NODE);
-//        tree.insert("This is the title", "Node C", NaryTree.NodeType.PACKAGE_NODE);
-//        tree.insert("Node C", "Lol", NaryTree.NodeType.PACKAGE_NODE);
-//        tree.insert("Node A.1", "Node D", NaryTree.NodeType.PACKAGE_NODE);
-//        tree.insert("Node A.1", "Node D.1", NaryTree.NodeType.PACKAGE_NODE);
-//        tree.insert("Node A.1", "Node D.4", NaryTree.NodeType.PACKAGE_NODE);
-//        tree.insert("Node D", "Node E", NaryTree.NodeType.PACKAGE_NODE);
-//        tree.insert("Node E", "Node F", NaryTree.NodeType.PACKAGE_NODE);
-//        tree.insert("Node G", "Node F", NaryTree.NodeType.PACKAGE_NODE);
-//        tree.insert("Node A.1", "Node D.3", NaryTree.NodeType.DELIVERABLE_NODE);
-//        tree.insert("Node A", "Node A.52 project", NaryTree.NodeType.PACKAGE_NODE);
-//
-//        tree.insertDeliverableNode("Node A", "Final node", "This is the content of the file");
-//        tree.insertDeliverableNode("Node A", "this is a try", "this is another file");
-//        System.out.println(tree);
         MainFrame frame = new MainFrame();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

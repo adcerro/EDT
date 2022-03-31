@@ -56,7 +56,7 @@ public class LinkedList<T> implements Iterable<ListNode<T>>{
     }
 
     public T find(ILinkedHelper<T> comparator, T searchValue) {
-        for (ListNode<T> node: this) {
+        for (ListNode<T> node : this) {
             T nodeValue = node.getValue();
             if (comparator.compare(nodeValue, searchValue)) {
                 return nodeValue;
@@ -77,5 +77,67 @@ public class LinkedList<T> implements Iterable<ListNode<T>>{
                 "head=" + head +
                 "nodes=" + listNodes +
                 '}';
-    }  
+    }
+
+    public int size() {
+        return length;
+    }
+
+    public void updateAt(int index, T newValue) {
+        ListNode<T> current = getAt(index);
+        if (current == null) return;
+
+        current.setValue(newValue);
+    }
+
+    public int indexOf(T element) {
+        int index = 0;
+
+        for (ListNode<T> el: this) {
+            if (el.getValue().equals(element)) return index;
+
+            index++;
+        }
+
+        return -1;
+    }
+
+    private ListNode<T> getNode(int index) {
+        if (index >= length) return null;
+
+        int i = 0;
+        for (ListNode<T> el: this) {
+            if (i == index) return el;
+
+            i++;
+        }
+
+        return null;
+    }
+
+    public ListNode<T> getAt(int index) {
+        if (index >= length) return null;
+
+        ListNode<T> current = head;
+        int i = 0;
+        while (i < index) {
+            i++;
+            current = current.next;
+        }
+
+        return current;
+    }
+
+    public T getAt2(int index) {
+        if (index >= length) return null;
+
+        ListNode<T> current = head;
+        int i = 0;
+        while (i < index) {
+            i++;
+            current = current.next;
+        }
+
+        return current.getValue();
+    } 
 }

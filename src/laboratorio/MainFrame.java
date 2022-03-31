@@ -4,13 +4,11 @@
  */
 package laboratorio;
 
-
 import javax.swing.JComboBox;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
-import javax.swing.tree.TreePath;
 
 /**
  *
@@ -29,16 +27,12 @@ public class MainFrame extends javax.swing.JFrame {
         DefaultMutableTreeNode n = new DefaultMutableTreeNode("EDT");
         treeModel = new DefaultTreeModel(n);
         graphicalTree.setModel(treeModel);
+        DefaultMutableTreeNode Fake = new DefaultMutableTreeNode("");
+        treeModel.insertNodeInto(Fake, n, n.getChildCount());
         tree.setTitle("EDT");
         jComboBox1.addItem(n);     
     }
-public boolean matches(String info, TreeNode t){
-    if(info.contentEquals(t.getValue())){
-    return true;
-    }else{
-        return false;
-    }
-}
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,9 +52,11 @@ public boolean matches(String info, TreeNode t){
         graphicalTree = new javax.swing.JTree();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        Error = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Proyect Managment Office");
+        setTitle("Proyect Management Office");
 
         jComboBox1.setToolTipText("Seleccione aqui donde desea insertar");
 
@@ -78,33 +74,50 @@ public boolean matches(String info, TreeNode t){
             }
         });
 
-        graphicalTree.setShowsRootHandles(true);
         jScrollPane1.setViewportView(graphicalTree);
 
         jLabel1.setText("Insertar en:");
 
-        jLabel2.setText("Nombre de paquete/archivo:");
+        jLabel2.setText("Nombre de paquete/entregable:");
+
+        Error.setBackground(new java.awt.Color(255, 51, 51));
+        Error.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Error.setForeground(new java.awt.Color(255, 0, 0));
+        Error.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        jLabel3.setText("Nota: Al crear un paquete se le asigna de hijo un entregable temporal sin nombre");
 
         javax.swing.GroupLayout edtPaneLayout = new javax.swing.GroupLayout(edtPane);
         edtPane.setLayout(edtPaneLayout);
         edtPaneLayout.setHorizontalGroup(
             edtPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, edtPaneLayout.createSequentialGroup()
+            .addGroup(edtPaneLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(237, 237, 237)
                 .addGroup(edtPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(edtPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(edtPaneLayout.createSequentialGroup()
-                        .addComponent(packageButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(deliverableButton))
-                    .addComponent(nodeField)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(30, 30, 30))
+                        .addComponent(jLabel3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(edtPaneLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(edtPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(edtPaneLayout.createSequentialGroup()
+                                .addGap(191, 191, 191)
+                                .addComponent(Error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(edtPaneLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                                .addGroup(edtPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(edtPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(edtPaneLayout.createSequentialGroup()
+                                        .addComponent(packageButton)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(deliverableButton))
+                                    .addComponent(nodeField)
+                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(30, 30, 30))))
         );
         edtPaneLayout.setVerticalGroup(
             edtPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,8 +136,12 @@ public boolean matches(String info, TreeNode t){
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(edtPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(packageButton)
-                            .addComponent(deliverableButton))))
-                .addContainerGap(185, Short.MAX_VALUE))
+                            .addComponent(deliverableButton))
+                        .addGap(35, 35, 35)
+                        .addComponent(Error, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35)
+                .addComponent(jLabel3)
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         mainPane.addTab("EDT", edtPane);
@@ -135,24 +152,39 @@ public boolean matches(String info, TreeNode t){
     }// </editor-fold>//GEN-END:initComponents
 
     private void packageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_packageButtonActionPerformed
-    DefaultMutableTreeNode n = new DefaultMutableTreeNode(nodeField.getText());
+        if (!check(nodeField.getText())) return;
+        DefaultMutableTreeNode n = new DefaultMutableTreeNode(nodeField.getText());
+        DefaultMutableTreeNode Fake = new DefaultMutableTreeNode("");
         DefaultMutableTreeNode parent = (DefaultMutableTreeNode) jComboBox1.getSelectedItem();
+        if(parent.getChildAt(0).toString() == ""){
+            treeModel.removeNodeFromParent((MutableTreeNode)parent.getChildAt(0));
+        }  
         treeModel.insertNodeInto(n, parent, parent.getChildCount());
-        tree.insert(parent.toString(), n.toString(), NaryTree.NodeType.PACKAGE_NODE);
+        treeModel.insertNodeInto(Fake, n, n.getChildCount());
+        tree.insertPackageNode(parent.toString(), n.toString());
         jComboBox1.addItem(n);
-        System.out.println(tree);
-       
-        
     }//GEN-LAST:event_packageButtonActionPerformed
 
     private void deliverableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deliverableButtonActionPerformed
+        if (!check(nodeField.getText())) return;
         DefaultMutableTreeNode n = new DefaultMutableTreeNode(nodeField.getText());
         DefaultMutableTreeNode parent = (DefaultMutableTreeNode) jComboBox1.getSelectedItem();
+        if(parent.getChildAt(0).toString() == ""){
+            treeModel.removeNodeFromParent((MutableTreeNode)parent.getChildAt(0));
+        }    
         treeModel.insertNodeInto(n, parent, parent.getChildCount());
-        tree.insertDeliverableNode(parent.toString(), n.toString(), "This is the content of the file");
-        System.out.println(tree);
+        tree.insertDerivableNode(parent.toString(), n.toString(), "This is the content of the file");
     }//GEN-LAST:event_deliverableButtonActionPerformed
 
+    public boolean check(String nombre){
+        if (nombre.equals("")){
+            Error.setText("No se pueden insertar paquetes/entregables sin nombre");
+            return false;
+        } else{
+            Error.setText("");
+            return true;
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -189,12 +221,14 @@ public boolean matches(String info, TreeNode t){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Error;
     private javax.swing.JButton deliverableButton;
     private javax.swing.JPanel edtPane;
     private javax.swing.JTree graphicalTree;
     private javax.swing.JComboBox<DefaultMutableTreeNode> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane mainPane;
     private javax.swing.JTextField nodeField;
