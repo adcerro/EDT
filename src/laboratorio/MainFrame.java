@@ -30,7 +30,9 @@ public class MainFrame extends javax.swing.JFrame {
         DefaultMutableTreeNode Fake = new DefaultMutableTreeNode("");
         treeModel.insertNodeInto(Fake, n, n.getChildCount());
         tree.setTitle("EDT");
-        jComboBox1.addItem(n);     
+        jComboBox1.addItem(n); 
+        HandFrame f = new HandFrame();
+        f.setVisible(true);
     }
 
     /**
